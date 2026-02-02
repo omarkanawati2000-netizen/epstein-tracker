@@ -1,0 +1,11 @@
+[2026-02-02 14:30:44] 🎬 Initial scan on startup...
+[2026-02-02 14:30:44] ======================================================================
+[2026-02-02 14:30:44] 🚀 Starting scheduled GitHub scan...
+[2026-02-02 14:30:44] ❌ Scanner failed with code 9009
+[2026-02-02 14:30:44] Error: Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+
+[2026-02-02 14:30:44] ⏰ Next scan in 6 hours
+[2026-02-02 14:30:44] ======================================================================
+
+[2026-02-02 14:30:44] ⏰ Scheduler started - will run every 6 hours
+[2026-02-02 14:30:44] Press Ctrl+C to stop
