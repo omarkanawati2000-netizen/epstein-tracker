@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epstein Files Archive - Comprehensive Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text: #1a1a1a;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --bg: #ffffff;
+            --bg-gray: #f9fafb;
+            --bg-dark: #111827;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-dark);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #1f2937;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .nav-link.active {
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1f2937 100%);
+            color: white;
+            padding: 80px 30px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25em;
+            color: #9ca3af;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 50px auto 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 1400px;
+            margin: -30px auto 60px;
+            padding: 0 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 20px 60px 20px 25px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1.1em;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 55px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.3em;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px 80px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin: 60px 0 30px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.1em;
+            color: var(--text-light);
+        }
+
+        /* Browse Cards */
+        .browse-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .browse-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .browse-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .browse-card-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .browse-card-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .browse-card-count {
+            font-size: 2em;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .browse-card-label {
+            color: var(--text-light);
+            font-size: 0.95em;
+        }
+
+        /* List Items */
+        .list-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .list-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .list-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateX(5px);
+        }
+
+        .list-item-main {
+            flex: 1;
+        }
+
+        .list-item-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .list-item-subtitle {
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        .list-item-meta {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-primary {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge-tier-inner {
+            background: #fecaca;
+            color: #991b1b;
+        }
+
+        .badge-tier-frequent {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .badge-tier-documented {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-tier-peripheral {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            color: var(--primary);
+        }
+
+        .tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000;
+            overflow-y: auto;
+            padding: 50px 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            padding: 40px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #f3f4f6;
+            color: var(--text-light);
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #e5e7eb;
+            color: var(--primary);
+        }
+
+        .modal-title {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--primary);
+            padding-right: 50px;
+        }
+
+        .modal-subtitle {
+            color: var(--text-light);
+            font-size: 1.1em;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-section {
+            margin-bottom: 35px;
+        }
+
+        .modal-section h3 {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .modal-section p {
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .modal-section ul {
+            margin-left: 20px;
+        }
+
+        .modal-section li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .info-box {
+            background: var(--bg-gray);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        /* PDF Viewer */
+        .pdf-viewer {
+            width: 100%;
+            height: 600px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-gray);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            color: #9ca3af;
+            padding: 60px 30px 30px;
+            margin-top: 100px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .auto-update-badge {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid #10b981;
+            color: #10b981;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .browse-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .list-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .list-item-meta {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .no-results-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .no-results h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .no-results p {
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="javascript:void(0)" class="logo" onclick="showHome();">
+                <div class="logo-icon">📁</div>
+                <span>Epstein Archive</span>
+            </a>
+            <nav class="nav">
+                <a href="javascript:void(0)" class="nav-link" onclick="showSection('home');">Home</a>
+                <a href="javascript:void(0)" class="nav-link" onclick="showSection('people');">People</a>
+                <a href="javascript:void(0)" class="nav-link" onclick="showSection('documents');">Documents</a>
+                <a href="javascript:void(0)" class="nav-link" onclick="showSection('sources');">Sources</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="auto-update-badge">
+            🤖 Auto-Updated Every 6 Hours
+        </div>
+        <h1>Epstein Files Archive</h1>
+        <p>A comprehensive, searchable database of publicly released documents, associates, and evidence related to Jeffrey Epstein</p>
+        
+        <div class="hero-stats">
+            <div class="stat-card">
+                <span class="stat-number" id="stat-associates">38</span>
+                <span class="stat-label">Associates Documented</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="stat-documents">18</span>
+                <span class="stat-label">Major Document Releases</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">3M+</span>
+                <span class="stat-label">Pages Released</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="stat-repos">25+</span>
+                <span class="stat-label">GitHub Repositories</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search -->
+    <div class="search-container">
+        <input type="text" 
+               class="search-box" 
+               id="globalSearch" 
+               placeholder="Search everything... people, documents, sources"
+               onkeyup="globalSearch(this.value)">
+        <span class="search-icon">🔍</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+<<<<<<< HEAD
+        <!-- Home Section -->
+        <div id="section-home" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Browse Archive</h2>
+                <p class="section-subtitle">Explore documents and connections by category</p>
+            </div>
+
+            <div class="browse-grid">
+                <a href="javascript:void(0)" class="browse-card" onclick="showSection('people');">
+                    <span class="browse-card-icon">👥</span>
+                    <h3 class="browse-card-title">People</h3>
+                    <span class="browse-card-count" id="browse-people-count">38</span>
+                    <span class="browse-card-label">documented associates</span>
+                </a>
+
+                <a href="javascript:void(0)" class="browse-card" onclick="showSection('documents');">
+                    <span class="browse-card-icon">📄</span>
+                    <h3 class="browse-card-title">Documents</h3>
+                    <span class="browse-card-count" id="browse-docs-count">18</span>
+                    <span class="browse-card-label">major releases</span>
+                </a>
+
+                <a href="javascript:void(0)" class="browse-card" onclick="showSection('sources');">
+                    <span class="browse-card-icon">🔗</span>
+                    <h3 class="browse-card-title">Sources</h3>
+                    <span class="browse-card-count">25+</span>
+                    <span class="browse-card-label">official archives</span>
+                </a>
+            </div>
+
+            <!-- Top People Preview -->
+            <div class="section-header">
+                <h2 class="section-title">Top Associates</h2>
+                <p class="section-subtitle">Most documented individuals in official releases</p>
+            </div>
+            <div id="topPeoplePreview"></div>
+
+            <!-- Recent Documents Preview -->
+            <div class="section-header">
+                <h2 class="section-title">Recent Document Releases</h2>
+                <p class="section-subtitle">Latest publicly released materials</p>
+            </div>
+            <div id="recentDocsPreview"></div>
+
+            <!-- External Archive Link -->
+            <div class="section-header">
+                <h2 class="section-title">Complete Document Archive</h2>
+                <p class="section-subtitle">Access 8,175+ processed documents with AI analysis</p>
+            </div>
+            <div class="info-box">
+                <h3>🗄️ Epstein-Docs Archive</h3>
+                <p style="margin-bottom: 15px;">For access to 8,175+ processed, OCR'd, and searchable documents with AI-generated summaries, visit:</p>
+                <a href="https://epstein-docs.github.io/" target="_blank" class="btn btn-primary">
+                    Visit Complete Archive →
+                </a>
+            </div>
+        </div>
+
+        <!-- People Section -->
+        <div id="section-people" class="section" style="display:none;">
+            <div class="section-header">
+                <h2 class="section-title">Associates & Connections</h2>
+                <p class="section-subtitle">38 individuals documented in official releases</p>
+            </div>
+=======
+        <!-- Hero Header -->
+        <header>
+            <h1>📁 Epstein Files Tracker</h1>
+            <p>Comprehensive Public Archive of Official Government Releases & Verified Sources</p>
+            <div class="header-badge">✅ Updated: February 2, 2026 | 38 Associates • 18 Documents • 3M+ Pages</div>
+            <div class="header-badge" style="background: rgba(46, 204, 113, 0.2); border: 1px solid #27ae60; margin-top: 10px;">
+                🤖 Auto-Updated Every 6 Hours | Scans GitHub for New Repositories
+            </div>
+        </header>
+>>>>>>> f0d8f36a493ca4e7fb27d76e675c8f5ee38ef996
+
+            <div class="tabs">
+                <button class="tab active" onclick="filterPeople('all')">All (38)</button>
+                <button class="tab" onclick="filterPeople('inner-circle')">Inner Circle</button>
+                <button class="tab" onclick="filterPeople('frequent')">Frequent</button>
+                <button class="tab" onclick="filterPeople('documented')">Documented</button>
+                <button class="tab" onclick="filterPeople('peripheral')">Peripheral</button>
+            </div>
+
+            <div id="peopleList"></div>
+        </div>
+
+        <!-- Documents Section -->
+        <div id="section-documents" class="section" style="display:none;">
+            <div class="section-header">
+                <h2 class="section-title">Document Releases</h2>
+                <p class="section-subtitle">18 major public document releases</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="filterDocs('all')">All (18)</button>
+                <button class="tab" onclick="filterDocs('court')">Court</button>
+                <button class="tab" onclick="filterDocs('doj')">DOJ</button>
+                <button class="tab" onclick="filterDocs('fbi')">FBI</button>
+                <button class="tab" onclick="filterDocs('media')">Media</button>
+            </div>
+
+            <div id="documentsList"></div>
+        </div>
+
+        <!-- Sources Section -->
+        <div id="section-sources" class="section" style="display:none;">
+            <div class="section-header">
+                <h2 class="section-title">Official Sources</h2>
+                <p class="section-subtitle">Government archives and verified repositories</p>
+            </div>
+
+<<<<<<< HEAD
+            <div id="sourcesList"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="detailModal" class="modal" onclick="if(event.target===this) closeModal()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">×</button>
+                <div id="modalHeader"></div>
+=======
+            <!-- Sources Tab -->
+            <div class="tab-content" id="sources">
+                <div class="section-header">
+                    <h2>🔗 Where Epstein Materials Live</h2>
+                    <p>Comprehensive directory of all public sources for Epstein files</p>
+                </div>
+
+                <div class="disclaimer">
+                    <h3>📦 About These Sources</h3>
+                    <p>Epstein materials are scattered across multiple platforms and repositories. This page tracks all known public sources, including official government sites, court systems, GitHub archives, and independent journalism.</p>
+                    <p><strong>⚠️ Warning:</strong> GitHub repositories can be removed at any time. We provide a scanner tool to monitor repository status.</p>
+                </div>
+
+                <!-- Official Government Sources -->
+                <div class="source-category">
+                    <h3>🏛️ Official Government Sources</h3>
+                    <p class="category-description">Primary government repositories - most reliable and permanent</p>
+                    
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h4>🏛️ DOJ Epstein Library</h4>
+                            <span class="source-status active">✅ Active</span>
+                        </div>
+                        <p class="source-description">Official Department of Justice repository containing 3.5+ million pages released under the Epstein Files Transparency Act. Includes photos, videos, court records, FBI documents, and investigative materials.</p>
+                        <div class="source-meta">
+                            <span>📊 3.5M+ pages</span>
+                            <span>🎥 2,000+ videos</span>
+                            <span>📸 180,000+ images</span>
+                        </div>
+                        <a href="https://www.justice.gov/epstein" target="_blank" class="source-link">Visit DOJ Library →</a>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h4>🔍 FBI Vault - Jeffrey Epstein</h4>
+                            <span class="source-status active">✅ Active</span>
+                        </div>
+                        <p class="source-description">FBI's Freedom of Information Act (FOIA) library containing investigation files, witness interviews, and evidence from FBI investigations into Epstein.</p>
+                        <div class="source-meta">
+                            <span>📊 1,200+ pages</span>
+                            <span>📂 Multiple parts</span>
+                            <span>🆓 Free access</span>
+                        </div>
+                        <a href="https://vault.fbi.gov/jeffrey-epstein" target="_blank" class="source-link">Visit FBI Vault →</a>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h4>🏛️ House Oversight Committee</h4>
+                            <span class="source-status active">✅ Active</span>
+                        </div>
+                        <p class="source-description">Congressional releases including 33,295+ pages from DOJ and 20,000+ pages from Epstein's estate. Includes emails, photos, and estate documents.</p>
+                        <div class="source-meta">
+                            <span>📊 53,000+ pages</span>
+                            <span>📧 Extensive emails</span>
+                            <span>📸 Photo archives</span>
+                        </div>
+                        <a href="https://oversight.house.gov/release/oversight-committee-releases-epstein-records-provided-by-the-department-of-justice/" target="_blank" class="source-link">Visit Committee Site →</a>
+                    </div>
+                </div>
+
+                <!-- Court Document Systems -->
+                <div class="source-category">
+                    <h3>⚖️ Court Document Systems</h3>
+                    <p class="category-description">Official federal court filing systems</p>
+                    
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h4>⚖️ PACER - Federal Courts</h4>
+                            <span class="source-status active">✅ Active</span>
+                        </div>
+                        <p class="source-description">Public Access to Court Electronic Records - official system for federal court documents. Contains all unsealed filings from Epstein and Maxwell cases. <strong>Note: Requires account and charges $0.10/page</strong></p>
+                        <div class="source-meta">
+                            <span>💰 Paid access</span>
+                            <span>📋 Official court records</span>
+                            <span>🔒 Some sealed docs</span>
+                        </div>
+                        <a href="https://pacer.uscourts.gov/" target="_blank" class="source-link">Visit PACER →</a>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h4>⚖️ Giuffre v. Maxwell Docket</h4>
+                            <span class="source-status active">✅ Active</span>
+                        </div>
+                        <p class="source-description">The 2015 defamation case that resulted in the January 2024 unsealing of 943 pages of documents. Case No. 1:15-cv-07433 (S.D.N.Y.)</p>
+                        <div class="source-meta">
+                            <span>📋 943 pages unsealed</span>
+                            <span>📅 Jan 2024</span>
+                        </div>
+                        <a href="https://pacer.uscourts.gov/" target="_blank" class="source-link">Access via PACER →</a>
+                    </div>
+                </div>
+
+                <!-- GitHub Repositories -->
+                <div class="source-category">
+                    <h3>📦 GitHub Repositories</h3>
+                    <p class="category-description">Community archives and analysis tools - <strong>⚠️ Can be removed at any time</strong></p>
+                    
+                    <div class="disclaimer" style="margin-bottom: 25px;">
+                        <h3>🤖 Automated Discovery</h3>
+                        <p>This website runs an automated scanner <strong>every 6 hours</strong> that searches GitHub for new Epstein-related repositories. When new repos are discovered, they automatically appear here with a <strong>🆕 NEW</strong> badge.</p>
+                        <p>Each repository shows a freshness indicator: 🔥 <strong>Today</strong> (updated today), ✅ <strong>This week</strong> (within 7 days), 📅 <strong>This month</strong> (within 30 days), or ⚠️ <strong>Older</strong> (90+ days).</p>
+                        <p><strong>Last scan:</strong> Check the header at the top of the page for the most recent update time.</p>
+                    </div>
+                    <div class="source-card github-repo">
+                        <div class="source-header">
+                            <h4>📦 epstein-docs Archive</h4>
+                            <span class="source-status checking">🔄 Check Status</span>
+                        </div>
+                        <p class="source-description">Automatically processed, OCR'd, searchable archive of 8,175+ documents with AI-powered entity extraction and analysis. Includes web interface.</p>
+                        <div class="source-meta">
+                            <span>📊 8,175+ documents</span>
+                            <span>🤖 AI analysis</span>
+                            <span>🔍 Searchable</span>
+                        </div>
+                        <div class="source-links">
+                            <a href="https://github.com/epstein-docs/epstein-docs.github.io" target="_blank" class="source-link">GitHub Repo →</a>
+                            <a href="https://epstein-docs.github.io/" target="_blank" class="source-link secondary">Website →</a>
+                        </div>
+                    </div>
+
+                    <div class="source-card github-repo">
+                        <div class="source-header">
+                            <h4>📦 FULL_EPSTEIN_INDEX</h4>
+                            <span class="source-status checking">🔄 Check Status</span>
+                        </div>
+                        <p class="source-description">Comprehensive unified research archive combining House Oversight docs, DOJ disclosures, flight logs, contact books, multimedia evidence, and FBI releases.</p>
+                        <div class="source-meta">
+                            <span>📊 Full archive</span>
+                            <span>🎥 BOP video</span>
+                            <span>📋 Flight logs</span>
+                        </div>
+                        <a href="https://github.com/theelderemo/FULL_EPSTEIN_INDEX" target="_blank" class="source-link">GitHub Repo →</a>
+                    </div>
+
+                    <div class="source-card github-repo">
+                        <div class="source-header">
+                            <h4>📦 Epstein Doc Explorer</h4>
+                            <span class="source-status checking">🔄 Check Status</span>
+                        </div>
+                        <p class="source-description">Graph explorer with network visualization showing relationships between people, organizations, and locations. Interactive D3.js interface with AI extraction.</p>
+                        <div class="source-meta">
+                            <span>📊 Network viz</span>
+                            <span>🤖 AI-powered</span>
+                            <span>🔍 Interactive</span>
+                        </div>
+                        <a href="https://github.com/maxandrews/Epstein-doc-explorer" target="_blank" class="source-link">GitHub Repo →</a>
+                    </div>
+
+                    <div class="source-card github-repo">
+                        <div class="source-header">
+                            <h4>📦 Epstein Files Mirror (Torrents)</h4>
+                            <span class="source-status checking">🔄 Check Status</span>
+                        </div>
+                        <p class="source-description">Mirror of magnet links for the massive Jan 30, 2026 DOJ release (300GB+). Provides torrent access for preservation and distribution.</p>
+                        <div class="source-meta">
+                            <span>📊 300GB+</span>
+                            <span>🧲 Torrents</span>
+                            <span>💾 Full archive</span>
+                        </div>
+                        <a href="https://github.com/yung-megafone/Epstein-Files" target="_blank" class="source-link">GitHub Repo →</a>
+                    </div>
+
+                    <div class="source-card github-repo">
+                        <div class="source-header">
+                            <h4>📦 Epstein Archive (Analysis System)</h4>
+                            <span class="source-status checking">🔄 Check Status</span>
+                        </div>
+                        <p class="source-description">Document processing and analysis system with "spice ratings", entity extraction, and advanced search capabilities. Full-stack research platform.</p>
+                        <div class="source-meta">
+                            <span>🔍 Advanced search</span>
+                            <span>📊 Analysis tools</span>
+                            <span>⚛️ React UI</span>
+                        </div>
+                        <a href="https://github.com/ErikVeland/epstein-archive" target="_blank" class="source-link">GitHub Repo →</a>
+                    </div>
+
+                    <div class="source-card github-repo">
+                        <div class="source-header">
+                            <h4>📦 Epstein Document Search</h4>
+                            <span class="source-status checking">🔄 Check Status</span>
+                        </div>
+                        <p class="source-description">Searchable database using Meilisearch for fast, full-text search of court documents. Includes web interface and metadata extraction.</p>
+                        <div class="source-meta">
+                            <span>⚡ Fast search</span>
+                            <span>🔍 Full-text</span>
+                            <span>🌐 Web UI</span>
+                        </div>
+                        <a href="https://github.com/paulgp/epstein-document-search" target="_blank" class="source-link">GitHub Repo →</a>
+                    </div>
+
+                    <div class="source-card github-repo">
+                        <div class="source-header">
+                            <h4>📦 Epstein Files Dataset</h4>
+                            <span class="source-status checking">🔄 Check Status</span>
+                        </div>
+                        <p class="source-description">25,000+ plain text files from Nov 2025 House Oversight release, organized in CSV format. Includes OCR'd images and native text files.</p>
+                        <div class="source-meta">
+                            <span>📊 25,000+ files</span>
+                            <span>📄 CSV format</span>
+                            <span>🔍 OCR'd</span>
+                        </div>
+                        <a href="https://github.com/theelderemo/Epstein-files" target="_blank" class="source-link">GitHub Repo →</a>
+                    </div>
+
+                    <div class="disclaimer" style="margin-top: 30px;">
+                        <h3>🤖 GitHub Scanner Tool</h3>
+                        <p>We've created a Python scanner that monitors all GitHub repositories and checks their status. GitHub repos can be removed at any time (DMCA, takedowns, etc.).</p>
+                        <p><strong>Download the scanner:</strong> <a href="#" style="color: #856404; text-decoration: underline;">github_scanner.py</a></p>
+                        <p>Run it periodically to check repository status and download archives before they disappear.</p>
+                    </div>
+                </div>
+
+                <!-- Archive.org Mirrors -->
+                <div class="source-category">
+                    <h3>📚 Archive.org Mirrors</h3>
+                    <p class="category-description">Internet Archive copies for long-term preservation</p>
+                    
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h4>📚 Internet Archive - Epstein Collections</h4>
+                            <span class="source-status active">✅ Active</span>
+                        </div>
+                        <p class="source-description">Multiple collections on Archive.org containing mirrors of documents, PDFs, and media files. Search for "Epstein files" to find various uploads from archivists.</p>
+                        <div class="source-meta">
+                            <span>💾 Permanent storage</span>
+                            <span>🔍 Searchable</span>
+                            <span>🆓 Free access</span>
+                        </div>
+                        <a href="https://archive.org/search?query=epstein+files" target="_blank" class="source-link">Search Archive.org →</a>
+                    </div>
+                </div>
+
+                <!-- Independent Journalism -->
+                <div class="source-category">
+                    <h3>📰 Independent Journalism & Investigations</h3>
+                    <p class="category-description">Investigative reporting with document compilations</p>
+                    
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h4>📰 Miami Herald - Perversion of Justice</h4>
+                            <span class="source-status active">✅ Active</span>
+                        </div>
+                        <p class="source-description">Pulitzer Prize-finalist investigation that compiled hundreds of court documents, police reports, and victim statements. This reporting led to Epstein's 2019 federal prosecution.</p>
+                        <div class="source-meta">
+                            <span>🏆 Pulitzer finalist</span>
+                            <span>📊 Document database</span>
+                            <span>📰 Investigative series</span>
+                        </div>
+                        <a href="https://www.miamiherald.com/topics/jeffrey-epstein" target="_blank" class="source-link">View Series →</a>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h4>📰 Bloomberg - 18,700 Epstein Emails</h4>
+                            <span class="source-status active">✅ Active</span>
+                        </div>
+                        <p class="source-description">Bloomberg independently obtained and cryptographically verified 18,700 emails from Epstein's personal Yahoo account (2002-2022). Authenticated by four independent experts.</p>
+                        <div class="source-meta">
+                            <span>📧 18,700 emails</span>
+                            <span>✅ Verified</span>
+                            <span>📅 2002-2022</span>
+                        </div>
+                        <p class="source-note">Note: Full email database not publicly available - reported in Bloomberg articles</p>
+                    </div>
+                </div>
+
+                <!-- Download Tools -->
+                <div class="how-it-works" style="margin-top: 50px;">
+                    <h3>🛠️ Tools for Archiving</h3>
+                    <div class="how-it-works-intro">
+                        These tools help you download and preserve Epstein materials before they disappear
+                    </div>
+
+                    <div class="how-steps">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-title">GitHub Scanner</div>
+                            <div class="step-description">
+                                Python script that monitors all GitHub repositories, checks their status, and provides download links. Run daily to catch repos before removal.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Archive Team</div>
+                            <div class="step-description">
+                                Join /r/DataHoarder community efforts to mirror and preserve Epstein files. They coordinate torrent seeding and archive distribution.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Wget Mirroring</div>
+                            <div class="step-description">
+                                Use wget or httrack to mirror entire DOJ and FBI repositories locally. Essential for preservation as government sites can change.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-title">IPFS Distribution</div>
+                            <div class="step-description">
+                                Some archivists are distributing files via IPFS for decentralized, censorship-resistant access. Look for IPFS hashes in communities.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Tab -->
+            <div class="tab-content" id="timeline">
+                <div class="timeline-section">
+                    <h3>📈 Document Release Timeline</h3>
+                    <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">
+                        Number of major document releases per year (hover bars for page counts)
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="timelineChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h2>Key Milestones</h2>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-title">1996: First FBI Report</div>
+                    <p>Maria Farmer reports Epstein to FBI in September 1996 - nearly a decade before his first arrest. FBI failed to investigate at the time.</p>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-title">2008: Non-Prosecution Agreement</div>
+                    <p>Controversial plea deal allows Epstein to plead to state charges despite federal investigation. Agreement sealed for over a decade.</p>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-title">2019: Federal Indictment & Death</div>
+                    <p>Epstein indicted on federal sex trafficking charges. Dies by suicide in MCC New York while awaiting trial.</p>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-title">2021: Maxwell Conviction</div>
+                    <p>Ghislaine Maxwell convicted on 5 of 6 counts including sex trafficking of minors. Sentenced to 20 years.</p>
+                </div>
+
+                <div class="document-card">
+                    <div class="document-title">2024-2026: Major Document Releases</div>
+                    <p>Transparency Act leads to release of millions of pages including photos, videos, emails, and investigative materials.</p>
+                </div>
+            </div>
+
+            <!-- How It Works Tab -->
+            <div class="tab-content" id="howto">
+                <div class="how-it-works">
+                    <h3>ℹ️ How This Tracker Works</h3>
+                    <div class="how-it-works-intro">
+                        This is an independent public resource that aggregates officially released documents from government agencies, court filings, and verified news sources. Here's how we maintain accuracy and transparency:
+                    </div>
+
+                    <div class="how-steps">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Official Sources Only</div>
+                            <div class="step-description">
+                                Every piece of information comes from official government releases (FBI, DOJ, courts), verified court filings, or credible investigative journalism from established news organizations.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Evidence-Based Classification</div>
+                            <div class="step-description">
+                                Associates are categorized into tiers (Inner Circle, Frequent, Documented, Peripheral) based solely on the volume and nature of documented evidence in official sources - not speculation.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Context & Disclaimers</div>
+                            <div class="step-description">
+                                We provide full context for each entry. Being listed does not imply wrongdoing - many individuals had legitimate business or social relationships that were documented in released materials.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-title">Regular Updates</div>
+                            <div class="step-description">
+                                The tracker is updated as new official documents are released. An automated scanner runs every 6 hours to search GitHub for new Epstein-related repositories and updates this website automatically with freshness indicators (🔥 Today, ✅ This week, etc.). Last update: February 2, 2026.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">5</div>
+                            <div class="step-title">Searchable & Filterable</div>
+                            <div class="step-description">
+                                Use search and filter tools to find specific information. Filter associates by tier level, documents by source type, or search for specific names, dates, and keywords.
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">6</div>
+                            <div class="step-title">Direct Source Links</div>
+                            <div class="step-description">
+                                Where possible, we provide direct links to official government websites, court dockets (PACER), and verified news articles so you can verify information yourself.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h2>Data Sources</h2>
+                    <p>Where our information comes from</p>
+                </div>
+
+                <div class="stats-dashboard">
+                    <div class="stat-card">
+                        <div class="stat-number">🏛️</div>
+                        <div class="stat-label">Department of Justice</div>
+                        <div class="stat-sublabel">Primary source for investigations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">⚖️</div>
+                        <div class="stat-label">Federal Courts</div>
+                        <div class="stat-sublabel">PACER, unsealed documents</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">🔍</div>
+                        <div class="stat-label">FBI Vault</div>
+                        <div class="stat-sublabel">FOIA releases</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">📰</div>
+                        <div class="stat-label">Investigative Journalism</div>
+                        <div class="stat-sublabel">Miami Herald, Bloomberg, major outlets</div>
+                    </div>
+                </div>
+>>>>>>> f0d8f36a493ca4e7fb27d76e675c8f5ee38ef996
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About This Archive</h3>
+                    <p>An independent public resource tracking officially released documents, court filings, and verified evidence related to Jeffrey Epstein. All information comes from public, official sources.</p>
+                    <p>This tracker is automatically updated every 6 hours using a GitHub repository scanner to ensure the latest information is always available.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Official Sources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.justice.gov/epstein" target="_blank">DOJ Epstein Library</a></li>
+                        <li><a href="https://vault.fbi.gov/jeffrey-epstein" target="_blank">FBI Vault</a></li>
+                        <li><a href="https://epstein-docs.github.io/" target="_blank">Epstein-Docs Archive</a></li>
+                        <li><a href="https://www.courtlistener.com/" target="_blank">Court Listener</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Project</h3>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)" onclick="showSection('home');">Home</a></li>
+                        <li><a href="javascript:void(0)" onclick="showSection('people');">People</a></li>
+                        <li><a href="javascript:void(0)" onclick="showSection('documents');">Documents</a></li>
+                        <li><a href="javascript:void(0)" onclick="showSection('sources');">Sources</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>All documents are from public releases. Not affiliated with any government agency.</p>
+                <p style="margin-top: 10px; opacity: 0.7;">Last Updated: February 3, 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data will be loaded here - keeping your existing 38 associates and 18 documents
+        const associates = [
+            {id:1,name:"Ghislaine Maxwell",tier:"inner-circle",tierLabel:"Inner Circle",role:"Associate & Convicted Trafficker",description:"British socialite and Epstein's longtime associate. Convicted in 2021 on five federal counts including sex trafficking of minors.",evidence:["Convicted on 5 counts of sex trafficking (2021)","Named in hundreds of court documents","Managed Epstein's properties and staff","Recruited and groomed victims per trial testimony"]},
+            {id:2,name:"Prince Andrew (Duke of York)",tier:"frequent",tierLabel:"Frequent Associate",role:"British Royal",description:"British royal who maintained a relationship with Epstein. Settled civil lawsuit with Virginia Giuffre in 2022.",evidence:["Multiple photographs with Epstein","Flight logs showing numerous trips","Named in Virginia Giuffre lawsuit","Civil settlement reached (2022)","Stepped back from royal duties"]},
+            {id:3,name:"Bill Clinton",tier:"frequent",tierLabel:"Frequent Associate",role:"Former U.S. President",description:"Former U.S. President. Flight logs show multiple trips on Epstein's aircraft, primarily for humanitarian work in Africa.",evidence:["Flight logs document 26+ trips (2002-2003)","Traveled for Clinton Foundation work","Public acknowledgment of acquaintance","Clinton representatives deny knowledge of crimes"]},
+            {id:4,name:"Donald Trump",tier:"documented",tierLabel:"Documented Contact",role:"Former U.S. President",description:"Former U.S. President and businessman. Social relationship in 1990s-2000s New York/Palm Beach circles. Banned Epstein from Mar-a-Lago properties.",evidence:["Photographs at social events (1990s-2000s)","Mentioned in flight logs (1 domestic flight 1997)","Public statements about Epstein's social life","Banned from Mar-a-Lago (reportedly 2008)"]},
+            {id:5,name:"Alan Dershowitz",tier:"frequent",tierLabel:"Frequent Associate",role:"Attorney",description:"Attorney who represented Epstein in 2008 plea deal. Named in civil lawsuits alleging abuse; Dershowitz denies all allegations.",evidence:["Legal representation in 2008 case","Flight logs show multiple trips","Named in Virginia Giuffre allegations","Dershowitz filed defamation counter-suits","Maintains complete denial"]},
+            {id:6,name:"Leslie Wexner",tier:"inner-circle",tierLabel:"Inner Circle",role:"Billionaire Businessman",description:"Billionaire founder of L Brands (Victoria's Secret). Epstein managed Wexner's fortune and had power of attorney. Claimed he was deceived by Epstein.",evidence:["Granted Epstein power of attorney","Epstein managed vast fortune","Transferred Manhattan mansion to Epstein","Business relationship spanning decades","Wexner claimed financial misappropriation"]},
+            {id:7,name:"Jean-Luc Brunel",tier:"inner-circle",tierLabel:"Inner Circle",role:"Modeling Agent",description:"French modeling agent and close Epstein associate. Arrested in 2020, charged with rape and trafficking. Found dead in French prison in 2022.",evidence:["Named extensively in victim testimony","French investigation for rape/trafficking","Flight logs show extensive travel","Recruiting models per court documents","Found dead in prison (2022)"]},
+            {id:8,name:"Sarah Kellen",tier:"inner-circle",tierLabel:"Inner Circle",role:"Assistant/Scheduler",description:"Identified as Epstein's assistant and scheduler. Named in multiple lawsuits as facilitating abuse. Granted immunity in 2008 non-prosecution agreement.",evidence:["Named in victim depositions","Listed in flight logs extensively","2008 immunity agreement","Accused of scheduling victims","Denies wrongdoing"]},
+            {id:9,name:"Bill Gates",tier:"documented",tierLabel:"Documented Contact",role:"Microsoft Founder",description:"Microsoft founder who met Epstein multiple times after 2011 conviction. Meetings focused on philanthropy according to Gates representatives.",evidence:["Multiple meetings documented (2011+)","Flight logs show meetings","Emails between parties released","Gates expressed regret about association","Cited as factor in Gates divorce"]},
+            {id:10,name:"Glenn Dubin",tier:"frequent",tierLabel:"Frequent Associate",role:"Hedge Fund Billionaire",description:"Hedge fund billionaire and longtime friend. Maintained relationship after 2008 conviction. Named in victim depositions.",evidence:["Decades-long friendship","Social interactions post-conviction","Named in Virginia Giuffre deposition","Wife Eva Andersson-Dubin deposed in Maxwell trial","Denies knowledge of crimes"]},
+            {id:11,name:"Marvin Minsky",tier:"documented",tierLabel:"Documented Contact",role:"MIT Scientist",description:"MIT scientist and AI pioneer. Named in allegations after his death in 2016. MIT later returned donations linked to Epstein.",evidence:["Named in unsealed court documents","Received Epstein donations to MIT","Allegations emerged posthumously","MIT investigation launched after revelations"]},
+            {id:12,name:"Stephen Hawking",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Physicist",description:"Renowned physicist who attended a 2006 science conference in the Caribbean funded by Epstein. No allegations of wrongdoing.",evidence:["Attended 2006 conference on St. Thomas","Conference funded by Epstein","Submarine trip with other scientists","Academic/scientific context only"]},
+            {id:13,name:"Kevin Spacey",tier:"documented",tierLabel:"Documented Contact",role:"Actor",description:"Actor who traveled on Epstein's plane in 2002 for Clinton Foundation humanitarian trip to Africa.",evidence:["Flight logs from 2002 Africa trip","Traveled with Bill Clinton","Clinton Foundation humanitarian mission","No allegations related to Epstein crimes"]},
+            {id:14,name:"Naomi Campbell",tier:"documented",tierLabel:"Documented Contact",role:"Model",description:"Supermodel who was photographed with Epstein and appeared in flight logs. No allegations of wrongdoing.",evidence:["Photographs with Epstein","Appeared in flight logs","Social acquaintance","No allegations or charges"]},
+            {id:15,name:"Chris Tucker",tier:"documented",tierLabel:"Documented Contact",role:"Actor/Comedian",description:"Actor who traveled on Epstein's plane for Clinton Foundation humanitarian work in Africa.",evidence:["Flight logs from Africa humanitarian trips","Traveled with Bill Clinton","Clinton Foundation mission context","No allegations of misconduct"]},
+            {id:16,name:"Larry Summers",tier:"documented",tierLabel:"Documented Contact",role:"Economist/Harvard President",description:"Former Harvard president and Treasury Secretary. Maintained professional relationship with Epstein. Emails spanning 2013-2019 released in 2025.",evidence:["Professional relationship with Epstein","Emails spanning 2013-2019 released (House Oversight 2025)","Met with Epstein post-conviction","Harvard later returned Epstein donations"]},
+            {id:17,name:"Woody Allen",tier:"documented",tierLabel:"Documented Contact",role:"Director",description:"Filmmaker who was listed in Epstein's contact book. No allegations connecting Allen to Epstein's crimes.",evidence:["Listed in Epstein's 'black book'","Social acquaintance in New York circles","No allegations or charges related to Epstein"]},
+            {id:18,name:"Katie Couric",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Journalist",description:"Journalist listed in Epstein's contact information. No allegations of involvement in any crimes.",evidence:["Listed in Epstein contact records","Professional/social New York circles","No allegations or charges"]},
+            {id:19,name:"Courtney Love",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Musician",description:"Musician whose contact information appeared in Epstein's records. No allegations of involvement.",evidence:["Contact information in Epstein records","No substantive connection documented","No allegations or charges"]},
+            {id:20,name:"David Copperfield",tier:"documented",tierLabel:"Documented Contact",role:"Magician",description:"Magician named in court documents. Allegedly dined with Epstein and young women. Copperfield denies wrongdoing.",evidence:["Named in victim testimony","Alleged to have dined with Epstein","Copperfield issued denial","No charges filed"]},
+            {id:21,name:"Eva Andersson-Dubin",tier:"frequent",tierLabel:"Frequent Associate",role:"Physician/Former Partner",description:"Former girlfriend of Epstein, later married to Glenn Dubin. Testified in Maxwell trial. Maintained friendship with Epstein for decades.",evidence:["Former romantic partner of Epstein","Testified in Ghislaine Maxwell trial","Decades-long friendship","Named in victim depositions"]},
+            {id:22,name:"Al Gore",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Former Vice President",description:"Former Vice President whose contact information appeared in Epstein's records. No substantive connection documented.",evidence:["Listed in contact records","No documented meetings or relationship","No allegations or charges"]},
+            {id:23,name:"Jean Paul Agon",tier:"peripheral",tierLabel:"Peripheral Connection",role:"L'Oréal Executive",description:"Business executive listed in Epstein's contacts. No allegations of involvement.",evidence:["Listed in Epstein contact records","No substantive connection documented","No allegations"]},
+            {id:24,name:"Ehud Barak",tier:"documented",tierLabel:"Documented Contact",role:"Former Israeli PM",description:"Former Israeli Prime Minister who met with Epstein multiple times. Acknowledged meetings but denied knowledge of crimes.",evidence:["Multiple documented meetings","Visited Epstein's mansion","Business relationship discussed","Barak acknowledged meetings, denied knowledge of crimes"]},
+            {id:25,name:"Tony Blair",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Former UK PM",description:"Former British Prime Minister whose contact information was in Epstein's records.",evidence:["Listed in Epstein contact book","No documented meetings substantiated","No allegations"]},
+            {id:26,name:"Richard Branson",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Entrepreneur",description:"British entrepreneur who briefly met Epstein at social functions. No allegations of wrongdoing.",evidence:["Brief social encounters","Listed in contact information","No substantive relationship documented"]},
+            {id:27,name:"Sergey Brin",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Google Co-Founder",description:"Tech entrepreneur whose contact information appeared in Epstein's records. No documented relationship.",evidence:["Listed in contact records","No documented meetings","No allegations"]},
+            {id:28,name:"Michael Bloomberg",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Former NYC Mayor",description:"Former New York City mayor and businessman. Contact information in Epstein's records.",evidence:["Listed in Epstein contact book","No documented relationship","No allegations"]},
+            {id:29,name:"Elon Musk",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Entrepreneur",description:"Entrepreneur who was photographed once with Ghislaine Maxwell at public event. No connection to Epstein documented.",evidence:["Single photograph with Maxwell at public event","Musk stated he didn't know Maxwell","No Epstein connection documented"]},
+            {id:30,name:"Ralph Fiennes",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Actor",description:"Actor whose contact information appeared in Epstein's records. No documented connection.",evidence:["Listed in contact records","No substantive connection","No allegations"]},
+            {id:31,name:"Ted Kennedy",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Former Senator",description:"Former U.S. Senator whose contact information was in Epstein's records.",evidence:["Listed in contact book","No documented relationship","No allegations"]},
+            {id:32,name:"Henry Kissinger",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Former Secretary of State",description:"Former Secretary of State whose contact information appeared in Epstein's records.",evidence:["Listed in contact information","No documented meetings","No allegations"]},
+            {id:33,name:"Michael Jackson",tier:"documented",tierLabel:"Documented Contact",role:"Musician",description:"Musician whose photos with Epstein were released in 2025 DOJ document dump.",evidence:["Photos with Epstein released (DOJ Dec 2025)","Listed in contact records","No allegations of involvement in Epstein crimes"]},
+            {id:34,name:"Mick Jagger",tier:"documented",tierLabel:"Documented Contact",role:"Musician",description:"Rock musician whose photos with Epstein were released in 2025 DOJ documents.",evidence:["Photos with Epstein released (DOJ Dec 2025)","Social acquaintance","No allegations"]},
+            {id:35,name:"Diana Ross",tier:"documented",tierLabel:"Documented Contact",role:"Singer",description:"Singer whose photos with Epstein surfaced in 2025 DOJ release.",evidence:["Photos with Epstein released (DOJ Dec 2025)","Social connection","No allegations"]},
+            {id:36,name:"John Kerry",tier:"peripheral",tierLabel:"Peripheral Connection",role:"Former Secretary of State",description:"Former Secretary of State and Senator whose contact information appeared in Epstein's records.",evidence:["Listed in contact information","No documented relationship","No allegations"]},
+            {id:37,name:"George Mitchell",tier:"documented",tierLabel:"Documented Contact",role:"Former Senator",description:"Former U.S. Senator and diplomat. Named in court documents, though Mitchell denies allegations.",evidence:["Named in unsealed court documents","Mitchell issued denial","No charges filed","Alleged association disputed"]},
+            {id:38,name:"Maria Farmer",tier:"documented",tierLabel:"Documented Contact",role:"Victim/Witness",description:"Artist and early victim who reported Epstein to FBI in 1996. Her testimony was crucial in later investigations.",evidence:["Reported Epstein to FBI in 1996","Early victim testimony","1996 FBI tip confirmed (DOJ Dec 2025 release)","Key witness in investigations"]}
+        ];
+
+        const documents = [
+            {id:1,title:"2024 Court Document Unsealing - U.S. v. Ghislaine Maxwell",source:"court",category:"Court Filing",date:"2024-01-03",dateDisplay:"January 3, 2024",pages:943,pdfFile:"https://storage.courtlistener.com/recap/gov.uscourts.nysd.447706/gov.uscourts.nysd.447706.1326.0.pdf",officialLink:"https://www.courtlistener.com/docket/4355835/giuffre-v-maxwell/",description:"Federal court unsealed approximately 943 pages of documents related to the Ghislaine Maxwell case, including depositions and testimony excerpts. These documents include names of individuals associated with Jeffrey Epstein.",keyPoints:["Documents from Giuffre v. Maxwell defamation case","Includes depositions and witness testimony","Contains names of prominent individuals","Part of court-ordered transparency process"]},
+            {id:2,title:"FBI Documents Release - Epstein Investigation Files",source:"fbi",category:"Investigation",date:"2023-12-18",dateDisplay:"December 18, 2023",pages:1200,pdfFile:"https://vault.fbi.gov/jeffrey-epstein/Jeffrey%20Epstein%20Part%2001%20of%2022/view",officialLink:"https://vault.fbi.gov/jeffrey-epstein",description:"The FBI released approximately 1,200 pages of documents related to their investigation into Jeffrey Epstein under FOIA requests. Documents include investigative reports and witness interviews.",keyPoints:["Released under Freedom of Information Act","Contains investigative reports from 2006-2008","Includes redacted witness statements","Details federal investigation procedures"]},
+            {id:3,title:"Virgin Islands v. JPMorgan Chase - Court Filings",source:"court",category:"Court Filing",date:"2023-07-31",dateDisplay:"July 31, 2023",pages:567,officialLink:"https://www.documentcloud.org/",description:"Court documents from the Virgin Islands lawsuit against JPMorgan Chase regarding the bank's relationship with Jeffrey Epstein. Includes depositions and email exchanges.",keyPoints:["Civil lawsuit alleging bank facilitated trafficking","Includes internal bank communications","Details financial transactions","Settlement reached for $75 million"]},
+            {id:4,title:"DOJ Inspector General Report - Bureau of Prisons Review",source:"doj",category:"Government Report",date:"2020-11-19",dateDisplay:"November 19, 2020",pages:128,pdfFile:"https://oig.justice.gov/sites/default/files/reports/21-028.pdf",officialLink:"https://oig.justice.gov/reports/",description:"Department of Justice Inspector General report examining the circumstances surrounding Jeffrey Epstein's death at MCC New York and identifying failures in the Bureau of Prisons.",keyPoints:["Official DOJ investigation findings","Details failures in MCC operations","Identifies procedural violations","Recommends systemic improvements"]},
+            {id:5,title:"Flight Logs - Court Evidence Submission",source:"court",category:"Evidence",date:"2021-12-01",dateDisplay:"December 1, 2021",pages:221,officialLink:"https://www.documentcloud.org/",description:"Flight logs from Jeffrey Epstein's private aircraft submitted as evidence in the Ghislaine Maxwell trial. Documents span 1995-2013 and list passengers and destinations.",keyPoints:["Covers flights from 1995-2013","Lists passengers on private jets","Includes international destinations","Submitted as trial evidence"]},
+            {id:6,title:"2019 Indictment - U.S. v. Jeffrey Epstein",source:"doj",category:"Legal Filing",date:"2019-07-08",dateDisplay:"July 8, 2019",pages:14,pdfFile:"https://www.justice.gov/usao-sdny/press-release/file/1179036/download",officialLink:"https://www.justice.gov/usao-sdny/",description:"Federal indictment charging Jeffrey Epstein with sex trafficking conspiracy and sex trafficking. Filed in Southern District of New York.",keyPoints:["Federal sex trafficking charges","Covers period from 2002-2005","Details allegations and evidence","Basis for federal prosecution"]},
+            {id:7,title:"Miami Herald Investigative Series - Court Documents Compilation",source:"media",category:"Investigation",date:"2018-11-28",dateDisplay:"November 28, 2018",pages:2000,officialLink:"https://www.miamiherald.com/topics/jeffrey-epstein",description:"Miami Herald's 'Perversion of Justice' investigative series compiled court documents, police reports, and victim statements. This reporting led to federal prosecution.",keyPoints:["Pulitzer Prize-finalist investigation","Compiled hundreds of court documents","Victim testimony and statements","Led to renewed federal investigation"]},
+            {id:8,title:"2008 Non-Prosecution Agreement - Public Release",source:"court",category:"Legal Document",date:"2019-02-21",dateDisplay:"February 21, 2019",pages:53,officialLink:"https://www.documentcloud.org/",description:"The controversial 2008 non-prosecution agreement between federal prosecutors and Jeffrey Epstein, made public after court challenges. Details the agreement that allowed Epstein to plead to state charges.",keyPoints:["Original 2008 federal agreement","Sealed for over a decade","Shows lenient treatment details","Subject of victim rights lawsuit"]},
+            {id:9,title:"Ghislaine Maxwell Trial Transcripts",source:"court",category:"Court Proceeding",date:"2021-12-29",dateDisplay:"December 29, 2021",pages:3500,officialLink:"https://www.courtlistener.com/",description:"Complete trial transcripts from U.S. v. Ghislaine Maxwell, including victim testimony, witness statements, and evidence presentation. Maxwell was convicted on five counts.",keyPoints:["Complete trial proceedings","Victim impact testimony","Evidence and witness examination","Guilty verdict on 5 of 6 counts"]},
+            {id:10,title:"2024 Additional Unsealing - Batch 2",source:"court",category:"Court Filing",date:"2024-01-04",dateDisplay:"January 4, 2024",pages:327,officialLink:"https://www.courtlistener.com/docket/4355835/giuffre-v-maxwell/",description:"Second batch of unsealed documents from the Giuffre v. Maxwell case, released one day after the initial unsealing. Contains additional depositions and exhibits.",keyPoints:["Follow-up to January 3 release","Additional witness depositions","Court exhibits and evidence","Part of ongoing transparency process"]},
+            {id:11,title:"Prince Andrew Settlement Documents",source:"court",category:"Settlement",date:"2022-02-15",dateDisplay:"February 15, 2022",pages:12,officialLink:"https://www.courtlistener.com/",description:"Settlement agreement between Prince Andrew and Virginia Giuffre, ending the civil lawsuit. While terms are confidential, the filing confirms the case resolution.",keyPoints:["Civil lawsuit settlement","Ends litigation between parties","Terms remain confidential","Filed in U.S. District Court"]},
+            {id:12,title:"Black Book & Address Records",source:"media",category:"Evidence",date:"2015-01-05",dateDisplay:"January 5, 2015",pages:92,officialLink:"https://www.documentcloud.org/",description:"Jeffrey Epstein's contact directory, published by Gawker after being filed in court. Contains names and contact information for hundreds of individuals.",keyPoints:["Personal contact directory","Filed as court evidence","Published by media outlets","Contains hundreds of names"]},
+            {id:13,title:"DOJ Epstein Files - December 2025 Release",source:"doj",category:"Government Release",date:"2025-12-19",dateDisplay:"December 19, 2025",pages:3500,officialLink:"https://www.justice.gov/epstein",description:"Major DOJ release under Epstein Files Transparency Act. Includes surveillance video, flight logs, photos of prominent figures, FBI interviews, and grand jury transcripts. Many pages heavily redacted.",keyPoints:["Released under Transparency Act deadline","MCC surveillance video of Epstein's death","Photos of Clinton, Jackson, Jagger, Ross, others","FBI interviews with victims","Grand jury transcripts (many redacted)","Flight logs Virgin Islands to Palm Beach","Confirmed 1996 FBI tip from Maria Farmer"]},
+            {id:14,title:"House Oversight Committee Releases - 2025",source:"court",category:"Congressional",date:"2025-11-13",dateDisplay:"November 13, 2025",pages:20000,officialLink:"https://oversight.house.gov/",description:"House Oversight Committee released 20,000+ documents from Epstein estate including extensive emails between Larry Summers and Epstein spanning 2013-2019.",keyPoints:["20,000+ pages from Epstein's estate","Email correspondence with Larry Summers","Communications continued decade after conviction","Photos of Trump, Clinton, Summers, others","Led to Harvard investigation reopening"]},
+            {id:15,title:"Bloomberg News - 18,700 Epstein Emails",source:"media",category:"Investigation",date:"2025-09-15",dateDisplay:"September 15, 2025",pages:18700,officialLink:"https://www.bloomberg.com/",description:"Bloomberg independently obtained approximately 18,700 emails from Epstein's Yahoo account (2002-2022). Cryptographically verified and authenticated by four independent experts.",keyPoints:["18,700 emails from personal account","Spans 2002 through 2022","Cryptographic verification confirmed","Four independent experts validated","No evidence of fabrication found"]},
+            {id:16,title:"DOJ January 2026 Major Release",source:"doj",category:"Government Release",date:"2026-01-30",dateDisplay:"January 30, 2026",pages:3000000,officialLink:"https://www.justice.gov/epstein",description:"Massive DOJ release of over 3 million pages including 2,000 videos and 180,000 images. Follow-up to December 2025 release with less redaction.",keyPoints:["3+ million pages released","2,000 videos included","180,000 images","Additional property photos and evidence","Reduced redactions from December release"]},
+            {id:17,title:"Ghislaine Maxwell Interview - Todd Blanche",source:"doj",category:"Interview",date:"2025-08-22",dateDisplay:"August 22, 2025",pages:145,officialLink:"https://www.justice.gov/",description:"Transcript and audio of Deputy AG Todd Blanche's interview with convicted Epstein associate Ghislaine Maxwell, serving 20-year sentence.",keyPoints:["Official DOJ interview transcript","Audio recording included","Maxwell serving 20-year sentence","Conducted by Deputy Attorney General","Provides Maxwell's account of relationships"]},
+            {id:18,title:"Little St. James Property Photos & Videos",source:"court",category:"Evidence",date:"2025-12-04",dateDisplay:"December 4, 2025",pages:77,officialLink:"https://www.documentcloud.org/",description:"House Democrats released 73 photos and 4 videos of Epstein's 72-acre private island estate where alleged exploitation occurred.",keyPoints:["73 photos of Little St. James","4 videos of property","Documents island businesses","Shows locations of alleged abuse","Virgin Islands property evidence"]}
+        ];
+
+        const sources = [
+            {name:"DOJ Epstein Library",description:"Department of Justice's official archive containing 3.5+ million pages, 2,000 videos, and 180,000 images from investigations and releases.",url:"https://www.justice.gov/epstein",type:"Government",icon:"🏛️"},
+            {name:"FBI Vault",description:"FBI's Freedom of Information Act (FOIA) portal with 1,200+ pages of investigation files, surveillance reports, and witness interviews.",url:"https://vault.fbi.gov/jeffrey-epstein",type:"Government",icon:"🔍"},
+            {name:"Epstein-Docs Archive",description:"Community-maintained archive of 8,175+ processed documents with OCR, AI summaries, and searchable database. Open source project.",url:"https://epstein-docs.github.io/",type:"Community",icon:"📦"},
+            {name:"Court Listener",description:"Legal documents database including unsealed court filings, depositions, and evidence from Giuffre v. Maxwell and related cases.",url:"https://www.courtlistener.com/",type:"Legal",icon:"⚖️"},
+            {name:"PACER (Public Access to Court Electronic Records)",description:"Federal court system's official repository for accessing court documents ($0.10 per page).",url:"https://pacer.uscourts.gov/",type:"Legal",icon:"📄"},
+            {name:"House Oversight Committee",description:"Congressional releases including 20,000+ pages from Epstein estate and investigation materials.",url:"https://oversight.house.gov/",type:"Government",icon:"🏛️"},
+            {name:"Miami Herald - Perversion of Justice",description:"Pulitzer Prize-finalist investigative series that compiled court documents and victim testimony, leading to renewed federal investigation.",url:"https://www.miamiherald.com/topics/jeffrey-epstein",type:"Media",icon:"📰"},
+            {name:"Bloomberg Investigation",description:"18,700 cryptographically verified emails from Epstein's account (2002-2022), authenticated by four independent experts.",url:"https://www.bloomberg.com/",type:"Media",icon:"📰"},
+            {name:"Internet Archive",description:"Archived copies of documents, websites, and materials related to Epstein case for preservation and access.",url:"https://archive.org/",type:"Archive",icon:"🗄️"}
+        ];
+
+        // State
+        let currentSection = 'home';
+        let currentPeopleTier = 'all';
+        let currentDocFilter = 'all';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHome();
+            updateStats();
+        });
+
+        // Navigation
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            
+            // Show selected section
+            document.getElementById(`section-${section}`).style.display = 'block';
+            
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            
+            currentSection = section;
+            
+            // Render section content
+            if (section === 'home') renderHome();
+            if (section === 'people') renderPeople();
+            if (section === 'documents') renderDocuments();
+            if (section === 'sources') renderSources();
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            return false; // Prevent default link behavior
+        }
+
+        function showHome() {
+            showSection('home');
+            return false;
+        }
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('stat-associates').textContent = associates.length;
+            document.getElementById('stat-documents').textContent = documents.length;
+            document.getElementById('browse-people-count').textContent = associates.length;
+            document.getElementById('browse-docs-count').textContent = documents.length;
+        }
+
+        // Home Section
+        function renderHome() {
+            // Top people preview (inner circle + frequent)
+            const topPeople = associates
+                .filter(p => p.tier === 'inner-circle' || p.tier === 'frequent')
+                .slice(0, 10);
+            
+            document.getElementById('topPeoplePreview').innerHTML = `
+                <div class="list-grid">
+                    ${topPeople.map(person => `
+                        <div class="list-item" onclick="showPersonModal(${person.id})">
+                            <div class="list-item-main">
+                                <div class="list-item-title">${person.name}</div>
+                                <div class="list-item-subtitle">${person.role}</div>
+                            </div>
+                            <div class="list-item-meta">
+                                <span class="badge badge-tier-${person.tier}">${person.tierLabel}</span>
+                                <span class="badge badge-primary">${person.evidence.length} Evidence</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Recent documents (last 5)
+            const recentDocs = documents.slice(-5).reverse();
+            
+            document.getElementById('recentDocsPreview').innerHTML = `
+                <div class="list-grid">
+                    ${recentDocs.map(doc => `
+                        <div class="list-item" onclick="showDocModal(${doc.id})">
+                            <div class="list-item-main">
+                                <div class="list-item-title">${doc.title}</div>
+                                <div class="list-item-subtitle">${doc.dateDisplay} • ${doc.pages.toLocaleString()} pages</div>
+                            </div>
+                            <div class="list-item-meta">
+                                <span class="badge badge-primary">${doc.source.toUpperCase()}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // People Section
+        function filterPeople(tier) {
+            currentPeopleTier = tier;
+            renderPeople();
+            
+            // Update active tab
+            document.querySelectorAll('#section-people .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function renderPeople() {
+            const filtered = currentPeopleTier === 'all' 
+                ? associates 
+                : associates.filter(p => p.tier === currentPeopleTier);
+            
+            document.getElementById('peopleList').innerHTML = `
+                <div class="list-grid">
+                    ${filtered.map(person => `
+                        <div class="list-item" onclick="showPersonModal(${person.id})">
+                            <div class="list-item-main">
+                                <div class="list-item-title">${person.name}</div>
+                                <div class="list-item-subtitle">${person.role} • ${person.description.substring(0, 100)}...</div>
+                            </div>
+                            <div class="list-item-meta">
+                                <span class="badge badge-tier-${person.tier}">${person.tierLabel}</span>
+                                <span class="badge badge-primary">${person.evidence.length} Evidence</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Documents Section
+        function filterDocs(source) {
+            currentDocFilter = source;
+            renderDocuments();
+            
+            // Update active tab
+            document.querySelectorAll('#section-documents .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function renderDocuments() {
+            const filtered = currentDocFilter === 'all'
+                ? documents
+                : documents.filter(d => d.source === currentDocFilter);
+            
+            document.getElementById('documentsList').innerHTML = `
+                <div class="list-grid">
+                    ${filtered.map(doc => `
+                        <div class="list-item" onclick="showDocModal(${doc.id})">
+                            <div class="list-item-main">
+                                <div class="list-item-title">${doc.title}</div>
+                                <div class="list-item-subtitle">${doc.dateDisplay} • ${doc.pages.toLocaleString()} pages • ${doc.description.substring(0, 120)}...</div>
+                            </div>
+                            <div class="list-item-meta">
+                                <span class="badge badge-primary">${doc.source.toUpperCase()}</span>
+                                <span class="badge badge-success">${doc.category}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Sources Section
+        function renderSources() {
+            document.getElementById('sourcesList').innerHTML = `
+                <div class="list-grid">
+                    ${sources.map(source => `
+                        <div class="list-item" onclick="window.open('${source.url}', '_blank')">
+                            <div class="list-item-main">
+                                <div class="list-item-title">${source.icon} ${source.name}</div>
+                                <div class="list-item-subtitle">${source.description}</div>
+                            </div>
+                            <div class="list-item-meta">
+                                <span class="badge badge-primary">${source.type}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Modals
+        function showPersonModal(id) {
+            const person = associates.find(p => p.id === id);
+            if (!person) return;
+            
+            document.getElementById('modalHeader').innerHTML = `
+                <h2 class="modal-title">${person.name}</h2>
+                <p class="modal-subtitle">${person.role} • ${person.tierLabel}</p>
+            `;
+            
+            document.getElementById('modalBody').innerHTML = `
+                <div class="modal-section">
+                    <span class="badge badge-tier-${person.tier}">${person.tierLabel}</span>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Background</h3>
+                    <p>${person.description}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Documented Evidence</h3>
+                    <ul>
+                        ${person.evidence.map(e => `<li>${e}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>Classification:</strong> ${person.tierLabel}</p>
+                    <p style="margin-top: 10px; font-size: 0.9em; color: var(--text-light);">
+                        Being documented does not imply wrongdoing. Classification is based solely on the extent of documentation in official public releases.
+                    </p>
+                </div>
+            `;
+            
+            document.getElementById('detailModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showDocModal(id) {
+            const doc = documents.find(d => d.id === id);
+            if (!doc) return;
+            
+            document.getElementById('modalHeader').innerHTML = `
+                <h2 class="modal-title">${doc.title}</h2>
+                <p class="modal-subtitle">${doc.dateDisplay} • ${doc.pages.toLocaleString()} pages</p>
+            `;
+            
+            const hasPDF = doc.pdfFile && doc.pdfFile !== '';
+            
+            document.getElementById('modalBody').innerHTML = `
+                <div class="modal-section">
+                    <span class="badge badge-primary">${doc.source.toUpperCase()}</span>
+                    <span class="badge badge-success">${doc.category}</span>
+                </div>
+                
+                ${hasPDF ? `
+                    <div class="modal-section">
+                        <iframe src="${doc.pdfFile}" class="pdf-viewer"></iframe>
+                        <div class="pdf-actions">
+                            <a href="${doc.pdfFile}" download class="btn btn-primary">📥 Download PDF</a>
+                            <a href="${doc.pdfFile}" target="_blank" class="btn btn-secondary">🔍 Open in New Tab</a>
+                        </div>
+                    </div>
+                ` : ''}
+                
+                <div class="modal-section">
+                    <h3>Description</h3>
+                    <p>${doc.description}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Key Points</h3>
+                    <ul>
+                        ${doc.keyPoints.map(p => `<li>${p}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                ${doc.officialLink ? `
+                    <div class="info-box">
+                        <p><strong>📎 Official Source:</strong> 
+                        <a href="${doc.officialLink}" target="_blank" style="color: var(--accent);">
+                            View on ${doc.source.toUpperCase()} Website →
+                        </a></p>
+                    </div>
+                ` : ''}
+            `;
+            
+            document.getElementById('detailModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Global Search
+        function globalSearch(query) {
+            if (!query) {
+                // Show current section
+                if (currentSection === 'home') renderHome();
+                if (currentSection === 'people') renderPeople();
+                if (currentSection === 'documents') renderDocuments();
+                if (currentSection === 'sources') renderSources();
+                return;
+            }
+            
+            query = query.toLowerCase();
+            
+            // Search people
+            const peopleResults = associates.filter(p => 
+                p.name.toLowerCase().includes(query) ||
+                p.description.toLowerCase().includes(query) ||
+                p.role.toLowerCase().includes(query)
+            );
+            
+            // Search documents
+            const docResults = documents.filter(d => 
+                d.title.toLowerCase().includes(query) ||
+                d.description.toLowerCase().includes(query) ||
+                d.keyPoints.some(k => k.toLowerCase().includes(query))
+            );
+            
+            // Render results based on current section
+            if (currentSection === 'people' || currentSection === 'home') {
+                if (peopleResults.length > 0) {
+                    document.getElementById(currentSection === 'home' ? 'topPeoplePreview' : 'peopleList').innerHTML = `
+                        <div class="list-grid">
+                            ${peopleResults.map(person => `
+                                <div class="list-item" onclick="showPersonModal(${person.id})">
+                                    <div class="list-item-main">
+                                        <div class="list-item-title">${person.name}</div>
+                                        <div class="list-item-subtitle">${person.role}</div>
+                                    </div>
+                                    <div class="list-item-meta">
+                                        <span class="badge badge-tier-${person.tier}">${person.tierLabel}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+            }
+            
+            if (currentSection === 'documents' || currentSection === 'home') {
+                if (docResults.length > 0) {
+                    document.getElementById(currentSection === 'home' ? 'recentDocsPreview' : 'documentsList').innerHTML = `
+                        <div class="list-grid">
+                            ${docResults.map(doc => `
+                                <div class="list-item" onclick="showDocModal(${doc.id})">
+                                    <div class="list-item-main">
+                                        <div class="list-item-title">${doc.title}</div>
+                                        <div class="list-item-subtitle">${doc.dateDisplay} • ${doc.pages.toLocaleString()} pages</div>
+                                    </div>
+                                    <div class="list-item-meta">
+                                        <span class="badge badge-primary">${doc.source.toUpperCase()}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === '/' && e.target.tagName !== 'INPUT') {
+                e.preventDefault();
+                document.getElementById('globalSearch').focus();
+            }
+        });
+    </script>
+</body>
+</html>
